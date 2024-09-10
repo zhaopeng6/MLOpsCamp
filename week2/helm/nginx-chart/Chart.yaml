@@ -1,0 +1,9 @@
+apiVersion: v2
+name: nginx-chart
+description: Nginx Demo Chart
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+maintainers:
+- email: zhaopeng6@gmail.com
+  name: mlopscamp
