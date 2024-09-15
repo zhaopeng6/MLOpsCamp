@@ -35,7 +35,7 @@ env:
   ECR_REPOSITORY: decision_tree           # set this to your Amazon ECR repository name
   ECS_SERVICE: decision_tree_service                # set this to your Amazon ECS service name
   ECS_CLUSTER: MLOpsCampDev                 # set this to your Amazon ECS cluster name
-  ECS_TASK_DEFINITION: DemoGitActions:1 # set this to the path to your Amazon ECS task definition
+  ECS_TASK_DEFINITION: DemoGitActions # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
   CONTAINER_NAME: decision_tree           # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
@@ -89,6 +89,7 @@ jobs:
         # be deployed to ECS.
         docker build -t 798223350085.dkr.ecr.us-west-1.amazonaws.com/decision_tree:latest . 
         docker push 798223350085.dkr.ecr.us-west-1.amazonaws.com/decision_tree:latest
+        echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
