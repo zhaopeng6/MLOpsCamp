@@ -76,7 +76,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -f ./week3/cicd/github_actions/container/. -t public.ecr.aws/r1b1y5x3/fullstackdscamp:latest
+        docker build -t public.ecr.aws/r1b1y5x3/fullstackdscamp:latest week3/cicd/github_actions/container -f week3/cicd/github_actions/container/Dockerfile 
         docker push
 
     - name: Fill in the new image ID in the Amazon ECS task definition
