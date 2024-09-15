@@ -77,7 +77,7 @@ jobs:
         python -m pip install --upgrade pip
         cd github_actions/container
         pip install -r requirements_test.txt
-        pytest tests.py
+        pytest
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
