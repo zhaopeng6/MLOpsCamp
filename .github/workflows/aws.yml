@@ -76,6 +76,8 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
+        pwd
+        ls -la
         cd week3/cicd/github_actions/container
         docker build -t public.ecr.aws/r1b1y5x3/fullstackdscamp:latest . 
         docker push
