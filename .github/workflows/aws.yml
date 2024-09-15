@@ -88,6 +88,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
+        cd github_actions/container
         docker build -t public.ecr.aws/r1b1y5x3/fullstackdscamp:latest . 
         docker push public.ecr.aws/r1b1y5x3/fullstackdscamp:latest
 
