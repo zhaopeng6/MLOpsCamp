@@ -32,7 +32,7 @@ on:
 
 env:
   AWS_REGION: us-west-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: fullstackdscamp           # set this to your Amazon ECR repository name
+  ECR_REPOSITORY: decision_tree           # set this to your Amazon ECR repository name
   ECS_SERVICE: decision_tree_service                # set this to your Amazon ECS service name
   ECS_CLUSTER: MLOpsCampDev                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: DemoGitActions:1 # set this to the path to your Amazon ECS task definition
@@ -50,7 +50,7 @@ jobs:
     environment: development
     defaults:
       run:
-        working-directory: week3/cicd
+        working-directory: week3/cicd/github_actions/container
 
     steps:
     - name: Checkout
@@ -63,11 +63,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ env.AWS_REGION }}
 
-    - name: Login to Amazon ECR Public
-      id: login-ecr-public
-      uses: aws-actions/amazon-ecr-login@v2
-      with:
-        registry-type: public
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -77,22 +75,20 @@ jobs:
     - name: Test with pytest
       run: |
         python -m pip install --upgrade pip
-        cd github_actions/container
         pip install -r requirements_test.txt
         pytest
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
-        REGISTRY: ${{ steps.login-ecr-public.outputs.registry }}
+        REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        cd github_actions/container
-        docker build -t public.ecr.aws/r1b1y5x3/fullstackdscamp:latest . 
-        docker push public.ecr.aws/r1b1y5x3/fullstackdscamp:latest
+        docker build -t 798223350085.dkr.ecr.us-west-1.amazonaws.com/decision_tree:latest . 
+        docker push 798223350085.dkr.ecr.us-west-1.amazonaws.com/decision_tree:latest
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
