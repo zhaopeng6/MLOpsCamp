@@ -48,6 +48,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     environment: development
+    defaults:
+      run:
+        working-directory: week3/cicd
 
     steps:
     - name: Checkout
