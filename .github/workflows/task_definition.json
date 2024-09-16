@@ -2,7 +2,7 @@
     "taskDefinitionArn": "arn:aws:ecs:us-west-1:798223350085:task-definition/DemoGitActions:2",
     "containerDefinitions": [
         {
-            "name": "decison_tree",
+            "name": "decision_tree",
             "image": "798223350085.dkr.ecr.us-west-1.amazonaws.com/decision_tree",
             "cpu": 0,
             "portMappings": [
