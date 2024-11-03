@@ -13,3 +13,5 @@ ENV PYTHONDONTWRITEBYTECODE=TRUE
 ENV PATH="/opt/program:${PATH}"
 
 WORKDIR /opt/program
+
+CMD ["serve"]
