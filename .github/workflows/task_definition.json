@@ -41,7 +41,7 @@
     "taskRoleArn": "arn:aws:iam::798223350085:role/FULLSTACKDS_ROLE1",
     "executionRoleArn": "arn:aws:iam::798223350085:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 10,
+    "revision": 11,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
