@@ -15,13 +15,9 @@
                 }
             ],
             "essential": true,
-            "command": [
-                "uvicorn app:app --host 0.0.0.0 --port 8000"
-            ],
             "environment": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "workingDirectory": "/app",
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -58,9 +54,6 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
         },
         {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.17"
-        },
-        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
@@ -93,7 +86,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-01-18T18:48:45.894Z",
+    "registeredAt": "2025-01-18T19:15:38.139Z",
     "registeredBy": "arn:aws:iam::798223350085:root",
     "enableFaultInjection": false,
     "tags": []
