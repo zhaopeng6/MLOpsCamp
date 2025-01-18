@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-1:798223350085:task-definition/DemoGitActions:10",
+    "taskDefinitionArn": "arn:aws:ecs:us-west-1:798223350085:task-definition/DemoGitActions:11",
     "containerDefinitions": [
         {
             "name": "iris_pred",
