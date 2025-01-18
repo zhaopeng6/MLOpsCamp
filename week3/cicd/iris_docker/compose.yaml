@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  predictor:
+    build: .
+    image: iris_pred:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./test_dir:/opt/ml
+    entrypoint: serve
+    
+#  redis:
+#    image: "redis:alpine"
+#    ports:
+#      - "6379:6379"

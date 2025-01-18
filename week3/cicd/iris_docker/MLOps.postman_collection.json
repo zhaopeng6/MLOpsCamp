@@ -1,0 +1,37 @@
+{
+	"info": {
+		"_postman_id": "79040ec7-d341-4355-86c4-900d6813ef6a",
+		"name": "MLOps",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10518276"
+	},
+	"item": [
+		{
+			"name": "https://lmjp1f6ou0.execute-api.us-west-2.amazonaws.com/produduction/mlops-inference",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2.0,400.0,0.38571846040122537,2.0,4.177940384158745,0.0,3.745462710628048,250.0,3.699591756294294,1.0,11.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,0.0,0.0,1.0"
+				},
+				"url": {
+					"raw": "https://lmjp1f6ou0.execute-api.us-west-2.amazonaws.com/produduction/mlops-inference",
+					"protocol": "https",
+					"host": [
+						"lmjp1f6ou0",
+						"execute-api",
+						"us-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"produduction",
+						"mlops-inference"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

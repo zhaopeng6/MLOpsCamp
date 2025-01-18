@@ -32,12 +32,12 @@ on:
 
 env:
   AWS_REGION: us-west-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: decision_tree           # set this to your Amazon ECR repository name
-  ECS_SERVICE: decision_tree_service                # set this to your Amazon ECS service name
+  ECR_REPOSITORY: iris_pred           # set this to your Amazon ECR repository name
+  ECS_SERVICE: iris_pred                # set this to your Amazon ECS service name
   ECS_CLUSTER: MLOpsCampDev                 # set this to your Amazon ECS cluster name
   ECS_TASK_DEFINITION: .github/workflows/task_definition.json # set this to the path to your Amazon ECS task definition
                                                # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: decision_tree         # set this to the name of the container in the
+  CONTAINER_NAME: irs_pred         # set this to the name of the container in the
                                                # containerDefinitions section of your task definition
 
 permissions:
@@ -50,7 +50,7 @@ jobs:
     environment: development
     defaults:
       run:
-        working-directory: week3/cicd/github_actions/container
+        working-directory: week3/cicd/iris_docker
 
     steps:
     - name: Checkout
@@ -72,18 +72,12 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Test with pytest
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements_test.txt
-        pytest
-
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: decision_tree
-        IMAGE_TAG: ${{ github.sha }}
+        ECR_REPOSITORY: iris_pred
+        IMAGE_TAG: latest
       run: |
         # Build a docker container and
         # push it to ECR so that it can
@@ -97,11 +91,11 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: .github/workflows/task_definition.json
-        container-name: decision_tree
+        container-name: iris_pred
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE }}
