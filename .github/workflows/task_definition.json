@@ -1,13 +1,13 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-west-1:798223350085:task-definition/DemoGitActions:11",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:977098985723:task-definition/iris_predict_yl:1",
     "containerDefinitions": [
         {
-            "name": "iris_pred",
-            "image": "798223350085.dkr.ecr.us-west-1.amazonaws.com/iris_pred:latest",
+            "name": "iris_predict_yl",
+            "image": "977098985723.dkr.ecr.us-east-1.amazonaws.com/iris_predict_yl:latest",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "iris_pred_8000",
+                    "name": "iris_predict_yl-8000-tcp",
                     "containerPort": 8000,
                     "hostPort": 8000,
                     "protocol": "tcp",
@@ -16,16 +16,18 @@
             ],
             "essential": true,
             "environment": [],
+            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
+            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/DemoGitActions",
+                    "awslogs-group": "/ecs/",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
-                    "awslogs-region": "us-west-1",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
@@ -33,11 +35,10 @@
             "systemControls": []
         }
     ],
-    "family": "DemoGitActions",
-    "taskRoleArn": "arn:aws:iam::798223350085:role/FULLSTACKDS_ROLE1",
-    "executionRoleArn": "arn:aws:iam::798223350085:role/ecsTaskExecutionRole",
+    "family": "iris_predict_yl",
+    "executionRoleArn": "arn:aws:iam::977098985723:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 11,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -55,9 +56,6 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -80,14 +78,14 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "512",
-    "memory": "2048",
+    "cpu": "1024",
+    "memory": "3072",
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-01-18T19:15:38.139Z",
-    "registeredBy": "arn:aws:iam::798223350085:root",
+    "registeredAt": "2025-01-23T02:56:39.177Z",
+    "registeredBy": "arn:aws:iam::977098985723:root",
     "enableFaultInjection": false,
     "tags": []
 }
