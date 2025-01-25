@@ -1,2 +1,4 @@
 *.pem
 __pycache__
+week2/airflow/logs/*
+.DS_Store
