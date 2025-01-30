@@ -2,3 +2,5 @@
 __pycache__
 week2/airflow/logs/*
 .DS_Store
+week4/flink-with-python
+week4/mlflow
