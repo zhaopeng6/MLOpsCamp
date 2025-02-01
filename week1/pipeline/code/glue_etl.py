@@ -21,7 +21,7 @@ job.init(args["JOB_NAME"], args)
 source_data_frame = spark.read.load(args["S3_SOURCE"], format="csv", inferSchema=True, header=False)
 
 # Split the dataframe in to training and validation dataframes.
-train_data, val_data = source_data_frame.randomSplit([0.7, 0.3])
+train_data, val_data = source_data_frame.randomSplit([0.5, 0.5])
 
 # Write both dataframes to the destination datastore.
 train_path = args["S3_DEST"] + args["TRAIN_KEY"]

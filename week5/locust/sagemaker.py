@@ -2,10 +2,8 @@ import boto3
 from locust import events
 import time
 
-
+endpoint_name = "CustomerChurn"
 runtime= boto3.client('runtime.sagemaker')
-
-endpoint_name = "test-sagemaker"
 
 
 def make_sagemaker_request_load_test(client, payload):
