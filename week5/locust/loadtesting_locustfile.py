@@ -7,11 +7,9 @@ import sys
 from locust import events
 import boto3
 
-
-endpoint_name = "mwaa-sm-endpoint-8c9a554702024efdbb647defc6717bb0"
+endpoint_name = "CustomerChurn"
 runtime = boto3.client('runtime.sagemaker')
 csv.field_size_limit(sys.maxsize)
-
 
 class SageMakerUser(FastHttpUser):
     abstract = True
